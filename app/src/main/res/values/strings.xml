@@ -2,4 +2,16 @@
     <string name="app_name">Petragram</string>
 
     <string name="pnombre">Nombre</string>
+    <string name="editName">Nombre</string>
+    <string name="editMail">Email</string>
+    <string name="editMessage">Comentario</string>
+    <string name="buttonEnviar">Enviar Comentario</string>
+
+    <string name="pantallaBioTitulo">Información del desarrollador</string>
+    <string name="nombreLabel">Nombre:\u0020\u0020\u0020</string>
+    <string name="telLabel">Telefono:\u0020\u0020\u0020</string>
+    <string name="fechaLabel">Fecha de Nacimiento:\u0020\u0020\u0020</string>
+    <string name="mailLabel">Email:\u0020\u0020\u0020</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

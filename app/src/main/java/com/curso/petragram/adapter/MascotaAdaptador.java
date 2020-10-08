@@ -1,4 +1,4 @@
-package com.curso.petragram;
+package com.curso.petragram.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
+import com.curso.petragram.pojo.Mascota;
+import com.curso.petragram.R;
+
 import java.util.ArrayList;
 
 

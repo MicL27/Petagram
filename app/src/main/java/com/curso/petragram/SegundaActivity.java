@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.curso.petragram.adapter.MascotaAdaptador;
+import com.curso.petragram.pojo.Mascota;
+
 import java.util.ArrayList;
 
 public class SegundaActivity extends AppCompatActivity {

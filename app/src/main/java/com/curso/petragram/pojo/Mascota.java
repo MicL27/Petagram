@@ -1,4 +1,4 @@
-package com.curso.petragram;
+package com.curso.petragram.pojo;
 
 public class Mascota {
 

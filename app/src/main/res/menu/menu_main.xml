@@ -8,6 +8,11 @@
         android:icon="@drawable/estrellita"
         app:showAsAction="always"
         android:title="Favoritos" />
-
+    <item
+        android:id="@+id/contacto"
+        android:title="Contacto"/>
+    <item
+        android:id="@+id/acerca_de"
+        android:title="Acerca de"/>
 
 </menu>
