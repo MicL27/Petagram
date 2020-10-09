@@ -1,18 +1,23 @@
-package com.curso.petragram.fragment;
+package com.curso.petragram.vista.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.curso.petragram.R;
 import com.curso.petragram.adapter.MascotaAdaptador;
 import com.curso.petragram.pojo.Mascota;
+import com.curso.petragram.presentador.IRecyclerViewFragmentPresenter;
+import com.curso.petragram.presentador.RecyclerViewFragmentPresenter;
 
 import java.util.ArrayList;
 
@@ -21,11 +26,12 @@ import java.util.ArrayList;
  * Use the {@link RecyclerViewFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecyclerViewFragment extends Fragment {
+public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragmentView {
 
 
     ArrayList<Mascota> mascotas;
     private RecyclerView listaMascotas;
+    private IRecyclerViewFragmentPresenter presenter;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,34 +78,47 @@ public class RecyclerViewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_recycler_view, container, false);
+        
 
         listaMascotas = (RecyclerView) v.findViewById(R.id.rvMascotas);
-
-
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-
-        inicializarListaMascotas();
-        inicializarAdaptador();
-
-        listaMascotas.setLayoutManager(llm);
+        presenter = new RecyclerViewFragmentPresenter(this, getContext());
 
         return v;
 
 
     }
 
-    public void inicializarAdaptador() {
-        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas);
-        listaMascotas.setAdapter(adaptador);
-    }
 
-    public void inicializarListaMascotas() {
+    /*public void inicializarListaMascotas() {
         mascotas = new ArrayList<Mascota>();
 
-        mascotas.add(new Mascota("Horus", R.drawable.cat1, "5"));
-        mascotas.add(new Mascota("Kima", R.drawable.cat2, "5"));
-        mascotas.add(new Mascota("Oreo", R.drawable.cat3, "4"));
-        mascotas.add(new Mascota("Kala", R.drawable.dog1, "2"));
-        mascotas.add(new Mascota("Lucas", R.drawable.dog2, "5"));
+        mascotas.add(new Mascota("Horus", R.drawable.cat1, 5));
+        mascotas.add(new Mascota("Kima", R.drawable.cat2, 5));
+        mascotas.add(new Mascota("Oreo", R.drawable.cat3, 5));
+        mascotas.add(new Mascota("Kala", R.drawable.dog1, 2));
+        mascotas.add(new Mascota("Lucas", R.drawable.dog2, 2));
+    }*/
+
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+        listaMascotas.setLayoutManager(llm);
+    }
+
+    @Override
+    public void generarGridLayout() {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+        listaMascotas.setLayoutManager(gridLayoutManager);
+    }
+
+    @Override
+    public MascotaAdaptador crearMascotaAdaptador(ArrayList<Mascota> mascotas) {
+        MascotaAdaptador adaptador = new MascotaAdaptador(mascotas, getActivity());
+        return adaptador;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(MascotaAdaptador adaptador) {
+        listaMascotas.setAdapter(adaptador);
     }
 }

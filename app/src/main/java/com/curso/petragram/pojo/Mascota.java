@@ -2,14 +2,25 @@ package com.curso.petragram.pojo;
 
 public class Mascota {
 
+
+
+    private int id;
     private String nombre;
     private int foto;
-    private String rating;
+    private int rating;
 
-    public Mascota(String nombre, int foto, String rating) {
+    public Mascota(String nombre, int foto, int rating) {
         this.nombre = nombre;
         this.foto = foto;
         this.rating = rating;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -28,11 +39,11 @@ public class Mascota {
         this.foto = foto;
     }
 
-    public String getRating() {
+    public int getRating() {
         return rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         this.rating = rating;
     }
 }
